@@ -1,23 +1,28 @@
-﻿using System.ComponentModel.DataAnnotations;
+import { Component } from '@angular/core';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 
-namespace StudentApp.V1.Models
-{
-    public class Student
-    {
-        public int Id { get; set; }
+@Component({
+  selector: 'app-student',
+  templateUrl: './student.component.html',
+  styleUrls: ['./student.component.css']
+})
+export class StudentComponent {
+  studentForm: FormGroup;
 
-        [Required]
-        public string Name { get; set; }
-
-        public string Email { get; set; }
-        public string Phone { get; set; }
-
-        [Required]
-        public string Gender { get; set; }
-
-        [Required]
-        public string BloodGroup { get; set; }
-
-        public Address Address { get; set; }
-    }
+  constructor(private formBuilder: FormBuilder) {
+    this.studentForm = this.formBuilder.group({
+      id: [],
+      name: ['', Validators.required],
+      email: [],
+      phone: [],
+      gender: ['', Validators.required],
+      bloodGroup: ['', Validators.required],
+      address: this.formBuilder.group({
+        street: [],
+        city: [],
+        state: [],
+        country: []
+      })
+    });
+  }
 }

@@ -74,6 +74,8 @@ namespace StudentApp
             //               .AllowAnyMethod();
             //    });
             //});
+
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         /// <summary>

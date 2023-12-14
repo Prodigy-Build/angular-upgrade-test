@@ -1,4 +1,4 @@
-﻿using IdentityServer4.EntityFramework.Options;
+using IdentityServer4.EntityFramework.Options;
 using Microsoft.AspNetCore.ApiAuthorization.IdentityServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
@@ -9,7 +9,7 @@ namespace StudentApp.Data
     public class StudentDbContext : ApiAuthorizationDbContext<ApplicationUser>
     {
         public StudentDbContext(
-            DbContextOptions options,
+            DbContextOptions<StudentDbContext> options,
             IOptions<OperationalStoreOptions> operationalStoreOptions) : base(options, operationalStoreOptions)
         {
         }
@@ -21,6 +21,6 @@ namespace StudentApp.Data
             builder.Entity<Student>().OwnsOne(s => s.Address);
         }
 
-        public DbSet<Student> Student { get; set; }
+        public DbSet<Student> Students { get; set; }
     }
 }

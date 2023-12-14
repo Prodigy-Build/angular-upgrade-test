@@ -1,4 +1,4 @@
-﻿using AutoWrapper.Extensions;
+using AutoWrapper.Extensions;
 using AutoWrapper.Wrappers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -32,11 +32,13 @@ namespace StudentApp.V1.Controllers
         /// <response code="200">The successfully retrieved students.</response>
         [HttpGet]
         [ProducesResponseType(typeof(IList<Student>), Status200OK)]
-        public async Task<IList<Student>> GetStudents()
+        public async Task<IActionResult> GetStudents()
         {
             _logger.LogInformation("Getting all students");
 
-            return await _repository.GetAllAsync();
+            var students = await _repository.GetAllAsync();
+
+            return Ok(students);
         }
 
         /// <summary>
@@ -58,7 +60,7 @@ namespace StudentApp.V1.Controllers
             if (student == null)
             {
                 _logger.LogError($"Student with id {id} does not exist");
-                throw new ApiException($"Student with id: {id} does not exist.", Status404NotFound);
+                return NotFound();
             }
 
             return student;
@@ -96,7 +98,7 @@ namespace StudentApp.V1.Controllers
         [ProducesResponseType(typeof(ApiResponse), Status201Created)]
         [ProducesResponseType(Status400BadRequest)]
         [ProducesResponseType(Status500InternalServerError)]
-        public async Task<ApiResponse> CreateStudent(Student student)
+        public async Task<IActionResult> CreateStudent(Student student)
         {
             _logger.LogInformation($"Creating student {student}");
 
@@ -107,7 +109,7 @@ namespace StudentApp.V1.Controllers
                     var newStudent = await _repository.CreateAsync(student);
 
                     _logger.LogInformation("Student successfully created.");
-                    return new ApiResponse("Student successfully created.", newStudent, Status201Created);
+                    return CreatedAtAction(nameof(GetStudent), new { id = newStudent.Id }, new ApiResponse("Student successfully created.", newStudent, Status201Created));
                 }
                 catch (System.Exception e)
                 {
@@ -157,7 +159,7 @@ namespace StudentApp.V1.Controllers
         [ProducesResponseType(Status400BadRequest)]
         [ProducesResponseType(Status404NotFound)]
         [ProducesResponseType(Status500InternalServerError)]
-        public async Task<ApiResponse> UpdateStudent(int id, Student student)
+        public async Task<IActionResult> UpdateStudent(int id, Student student)
         {
             _logger.LogInformation($"Updating student {student}");
 
@@ -179,7 +181,7 @@ namespace StudentApp.V1.Controllers
                     await _repository.UpdateAsync(student);
 
                     _logger.LogInformation($"Student with Id: {student.Id} successfully updated.");
-                    return new ApiResponse($"Student with Id: {student.Id} successfully updated.", true);
+                    return Ok(new ApiResponse($"Student with Id: {student.Id} successfully updated.", true));
                 }
                 catch (System.Exception e)
                 {
@@ -206,7 +208,7 @@ namespace StudentApp.V1.Controllers
         [ProducesResponseType(typeof(ApiResponse), Status200OK)]
         [ProducesResponseType(Status404NotFound)]
         [ProducesResponseType(Status500InternalServerError)]
-        public async Task<ApiResponse> DeleteStudent(int id)
+        public async Task<IActionResult> DeleteStudent(int id)
         {
             _logger.LogInformation($"Deleting student with id {id}");
 
@@ -222,7 +224,7 @@ namespace StudentApp.V1.Controllers
                 await _repository.DeleteAsync(student);
 
                 _logger.LogInformation($"Student with id {id} successfully deleted");
-                return new ApiResponse($"Student with Id: {id} successfully deleted.", true);
+                return Ok(new ApiResponse($"Student with Id: {id} successfully deleted.", true));
             }
             catch (System.Exception e)
             {

@@ -69,29 +69,17 @@ export class StudentAddEditComponent implements OnInit, AfterViewInit, OnDestroy
 
   ngOnInit() {
     this.studentForm = this.formBuilder.group({
-      id: 0,
-      name: [
-        "",
-        Validators.required
-      ],
+      id: [0],
+      name: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
       email: [""],
       phone: [""],
       gender: ["", Validators.required],
       bloodGroup: ["", Validators.required],
       address: this.formBuilder.group({
-        street: [
-          "",
-          Validators.required
-        ],
-        city: [
-          "",
-          Validators.required
-        ],
+        street: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
+        city: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]],
         state: [""],
-        country: [
-          "",
-          Validators.required
-        ]
+        country: ["", [Validators.required, Validators.minLength(2), Validators.maxLength(100)]]
       })
     });
 

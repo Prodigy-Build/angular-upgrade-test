@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -26,9 +25,8 @@ import { StudentAddEditComponent } from "./students/student-add-edit/student-add
         StudentDetailsComponent
     ],
     imports: [
-        BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
+        BrowserModule,
         BrowserAnimationsModule,
-        ToastrModule.forRoot(),
         HttpClientModule,
         ApiAuthorizationModule,
         ReactiveFormsModule,

@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -28,5 +28,18 @@ namespace StudentApp.Helpers.Extensions
 
             return services;
         }
+    }
+
+    // Angular dependencies
+    "dependencies": {
+      "@angular/animations": "8.2.12",
+      "@angular/common": "8.2.12",
+      "@angular/compiler": "8.2.12",
+      "@angular/core": "8.2.12",
+      "@angular/forms": "8.2.12",
+      "@angular/platform-browser": "8.2.12",
+      "@angular/platform-browser-dynamic": "8.2.12",
+      "@angular/platform-server": "8.2.12",
+      "@angular/router": "8.2.12"
     }
 }

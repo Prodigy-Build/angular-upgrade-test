@@ -44,7 +44,7 @@ namespace StudentApp.Helpers.Extensions
                         ValidAudience = config["JwtAuthentication:Audience"],
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["JwtAuthentication:SecretKey"])),
                         ClockSkew = TimeSpan.Zero,
-                        SaveSigninToken = true
+                        SaveToken = true
                     };
                 });
 

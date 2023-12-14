@@ -11,8 +11,8 @@ import { Student } from "src/app/models/Student";
 })
 export class StudentListComponent implements OnInit {
   pageTitle = "Student List";
-  filteredStudents;
-  students;
+  filteredStudents: Student[];
+  students: Student[];
   errorMessage = "";
   _listFilter = "";
 
@@ -46,11 +46,11 @@ export class StudentListComponent implements OnInit {
 
   getStudents() {
     this.studentService.getStudents().subscribe(
-      response => {
+      (response: any) => {
         this.students = response.result;
         this.filteredStudents = this.students;
       },
-      error => (this.errorMessage = <any>error)
+      (error: any) => (this.errorMessage = <any>error)
     );
   }
 

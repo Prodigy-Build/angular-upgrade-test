@@ -1,15 +1,19 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 import { AuthorizeGuard } from './authorize.guard';
 
 describe('AuthorizeGuard', () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
+            imports: [RouterTestingModule, HttpClientTestingModule],
             providers: [AuthorizeGuard]
         });
     });
 
-    it('should ...', inject([AuthorizeGuard], (guard: AuthorizeGuard) => {
+    it('should be created', () => {
+        const guard: AuthorizeGuard = TestBed.get(AuthorizeGuard);
         expect(guard).toBeTruthy();
-    }));
+    });
 });

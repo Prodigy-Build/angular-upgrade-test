@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using System.Collections.Generic;
@@ -21,17 +21,18 @@ namespace StudentApp.Helpers.Filters
 
             operation.Security = new List<OpenApiSecurityRequirement>
             {
-               new OpenApiSecurityRequirement{
+                new OpenApiSecurityRequirement
+                {
+                    [new OpenApiSecurityScheme
                     {
-                        new OpenApiSecurityScheme{
-                            Reference = new OpenApiReference{
-                                Id = "Bearer",
-                                Type = ReferenceType.SecurityScheme
-                            }
-                        },
-                        new List<string>()
-                    }
-            } };
+                        Reference = new OpenApiReference
+                        {
+                            Type = ReferenceType.SecurityScheme,
+                            Id = "Bearer"
+                        }
+                    }] = new List<string>()
+                }
+            };
         }
     }
 }

@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.AspNetCore.Mvc.Versioning;
 
 namespace StudentApp.Helpers.Extensions
 {
@@ -12,6 +16,7 @@ namespace StudentApp.Helpers.Extensions
                     // reporting api versions will return the headers "api-supported-versions" and "api-deprecated-versions"
                     options.ReportApiVersions = true;
                 });
+            
             services.AddVersionedApiExplorer(
                 options =>
                 {
@@ -23,6 +28,9 @@ namespace StudentApp.Helpers.Extensions
                     // can also be used to control the format of the API version in route templates
                     options.SubstituteApiVersionInUrl = true;
                 });
+
+			services.AddTransient&lt;IApiVersionDescriptionProvider, DefaultApiVersionDescriptionProvider&gt;();
+            services.AddTransient&lt;IConfigureOptions&lt;MvcOptions&gt;, ConfigureApiBehaviorOptions&gt;();
 
             return services;
         }

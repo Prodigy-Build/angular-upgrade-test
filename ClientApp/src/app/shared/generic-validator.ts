@@ -19,7 +19,7 @@ export class GenericValidator {
           if (this.validationMessages[controlKey]) {
             messages[controlKey] = "";
             if ((c.dirty || c.touched) && c.errors) {
-              Object.keys(c.errors).map(messageKey => {
+              Object.keys(c.errors).map((messageKey: string) => {
                 if (this.validationMessages[controlKey][messageKey]) {
                   messages[controlKey] +=
                     this.validationMessages[controlKey][messageKey] + " ";
@@ -38,8 +38,7 @@ export class GenericValidator {
     for (const controlKey in container.controls) {
       if (container.controls.hasOwnProperty(controlKey)) {
         if (container.controls[controlKey].errors) {
-          errorCount += Object.keys(container.controls[controlKey].errors)
-            .length;
+          errorCount += Object.keys(container.controls[controlKey].errors).length;
           console.log(errorCount);
         }
       }

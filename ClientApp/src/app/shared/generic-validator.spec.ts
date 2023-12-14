@@ -1,7 +1,12 @@
+import { TestBed } from '@angular/core/testing';
+
 import { GenericValidator } from './generic-validator';
 
 describe('GenericValidator', () => {
-  it('should create an instance', () => {
-    expect(new GenericValidator()).toBeTruthy();
+  beforeEach(() => TestBed.configureTestingModule({}));
+
+  it('should be created', () => {
+    const service: GenericValidator = TestBed.get(GenericValidator);
+    expect(service).toBeTruthy();
   });
 });

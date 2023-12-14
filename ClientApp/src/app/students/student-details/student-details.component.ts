@@ -20,7 +20,7 @@ export class StudentDetailsComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     try {
       const param = this.route.snapshot.paramMap.get("id");
       if (param) {
@@ -32,10 +32,10 @@ export class StudentDetailsComponent implements OnInit {
     }
   }
   
-  getStudent(id: number) {
+  getStudent(id: number): void {
     this.studentService.getStudent(id).subscribe(
-      response => (this.student = <Student>response.result),
-      error => (this.errorMessage = <any>error)
+      response => (this.student = response.result as Student),
+      error => (this.errorMessage = error)
     );
   }
 

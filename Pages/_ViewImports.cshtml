@@ -1,3 +1,40 @@
 @using StudentApp
 @namespace StudentApp.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+@* Upgrade to the latest Angular version *@
+@* Add latest Angular dependencies and versions *@
+@* Replace the existing dependencies with the following *@
+@* angular-* packages with version 8.2.12 *@
+@* font-awesome with version 4.7.0 *@
+@* core-js with version 3.3.3 *@
+@* rxjs with version 6.5.3 *@
+@* zone.js with version 0.9.1 *@
+@* ngx-toastr with version 11.2.1 *@
+
+@* Add the following scripts for required dependencies *@
+@* axios with version 0.19.0 *@
+@* jquery with version 3.4.1 *@
+@* bootstrap with version 4.4.1 *@
+@* popper.js with version 1.16.0 *@
+
+@using Microsoft.AspNetCore.Mvc.RazorPages
+@using Microsoft.Extensions.Configuration
+@using Microsoft.Extensions.DependencyInjection
+@using Microsoft.Extensions.Logging
+@using StudentApp.Application
+@using StudentApp.Infrastructure
+@using StudentApp.Application.Interfaces
+@inject ILogger<SignInModel> SignInLogger
+@inject SignInManager<IdentityUser> SignInManager
+@inject IUserManager UserManager
+@inject IEmailSender EmailSender
+@inject IConfiguration Configuration
+@inject IssueConfig IssueConfig
+@* Mock the injectable dependencies for testing purposes *@
+@inject Mock<ILogger<SignInModel>> MockSignInLogger
+@inject Mock<SignInManager<IdentityUser>> MockSignInManager
+@inject Mock<IUserManager> MockUserManager
+@inject Mock<IEmailSender> MockEmailSender
+@inject Mock<IConfiguration> MockConfiguration
+@inject Mock<IssueConfig> MockIssueConfig
