@@ -1,23 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations;
+import { Required } from '@angular/core';
 
-namespace StudentApp.V1.Models
-{
-    public class Student
-    {
-        public int Id { get; set; }
+export class Student {
+  public Id: number;
+  
+  @Required()
+  public Name: string;
+  
+  public Email: string;
+  public Phone: string;
+  
+  @Required()
+  public Gender: string;
+  
+  @Required()
+  public BloodGroup: string;
+  
+  public Address: Address;
+}
 
-        [Required]
-        public string Name { get; set; }
-
-        public string Email { get; set; }
-        public string Phone { get; set; }
-
-        [Required]
-        public string Gender { get; set; }
-
-        [Required]
-        public string BloodGroup { get; set; }
-
-        public Address Address { get; set; }
-    }
+export class Address {
+  // address properties here
 }

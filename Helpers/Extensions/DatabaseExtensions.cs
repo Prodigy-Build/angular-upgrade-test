@@ -17,7 +17,8 @@ namespace StudentApp.Helpers.Extensions
                 services.AddDbContext<StudentDbContext>(options =>
                     options
                     .UseInMemoryDatabase("StudentApp")
-                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+                    .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking)
+                    .UseLazyLoadingProxies());
             }
             else
             {

@@ -1,37 +1,22 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Collections.Generic;
-using System.Linq;
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { AuthGuard } from '@nestjs/passport';
 
-namespace StudentApp.Helpers.Filters
-{
-    public class SwaggerAuthorizeCheckOperationFilter : IOperationFilter
-    {
-        public void Apply(OpenApiOperation operation, OperationFilterContext context)
-        {
-            // Check for authorize attribute
-            var hasAuthorize = context.MethodInfo.DeclaringType.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any() ||
-                               context.MethodInfo.GetCustomAttributes(true).OfType<AuthorizeAttribute>().Any();
+export class SwaggerAuthorizeCheckOperationFilter implements IOperationFilter {
+  apply(operation: SwaggerApiOperation, context: SwaggerOperationFilterContext): void {
+    // Check for authorize attribute
+    const hasAuthorize =
+      context?.handler?.method?.decorators?.some((decorator) =>
+        decorator === AuthGuard()
+      ) ||
+      context?.handler?.parent?.class?.decorators?.some((decorator) =>
+        decorator === AuthGuard()
+      );
 
-            if (!hasAuthorize) return;
+    if (!hasAuthorize) return;
 
-            operation.Responses.TryAdd("401", new OpenApiResponse { Description = "Unauthorized" });
-            operation.Responses.TryAdd("403", new OpenApiResponse { Description = "Forbidden" });
+    operation.responses['401'] = { description: 'Unauthorized' };
+    operation.responses['403'] = { description: 'Forbidden' };
 
-            operation.Security = new List<OpenApiSecurityRequirement>
-            {
-               new OpenApiSecurityRequirement{
-                    {
-                        new OpenApiSecurityScheme{
-                            Reference = new OpenApiReference{
-                                Id = "Bearer",
-                                Type = ReferenceType.SecurityScheme
-                            }
-                        },
-                        new List<string>()
-                    }
-            } };
-        }
-    }
+    operation.security = [{ Bearer: [] }];
+  }
 }

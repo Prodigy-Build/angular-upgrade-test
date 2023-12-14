@@ -9,5 +9,11 @@
       "jasminewd2",
       "node"
     ]
-  }
+  },
+  "angularCompilerOptions": {
+    "enableIvy": true
+  },
+  "include": [
+    "src/**/*.spec.ts"
+  ]
 }

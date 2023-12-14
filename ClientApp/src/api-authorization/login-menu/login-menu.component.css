@@ -1,0 +1,39 @@
+/* This component contains the styles for the login menu */
+
+.login-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: #f2f2f2;
+}
+
+.login-menu__logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.login-menu__user {
+  display: flex;
+  align-items: center;
+}
+
+.login-menu__username {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #555;
+}
+
+.login-menu__button {
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login-menu__button:hover {
+  background-color: #0056b3;
+}

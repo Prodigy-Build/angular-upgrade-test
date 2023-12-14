@@ -60,7 +60,7 @@ export class StudentService {
       .pipe(catchError(this.handleError));
   }
 
-  private handleError(err) {
+  private handleError(err): Observable<never> {
     let errorMessage: string;
     if (err.error instanceof ErrorEvent) {
       errorMessage = `An error occurred: ${err.error.message}`;

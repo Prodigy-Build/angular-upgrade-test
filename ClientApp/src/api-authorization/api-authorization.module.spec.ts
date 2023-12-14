@@ -1,13 +1,15 @@
+import { TestBed } from '@angular/core/testing';
 import { ApiAuthorizationModule } from './api-authorization.module';
 
 describe('ApiAuthorizationModule', () => {
-    let apiAuthorizationModule: ApiAuthorizationModule;
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [ApiAuthorizationModule],
+    }).compileComponents();
+  });
 
-    beforeEach(() => {
-        apiAuthorizationModule = new ApiAuthorizationModule();
-    });
-
-    it('should create an instance', () => {
-        expect(apiAuthorizationModule).toBeTruthy();
-    });
+  it('should create an instance', () => {
+    const module = TestBed.inject(ApiAuthorizationModule);
+    expect(module).toBeTruthy();
+  });
 });

@@ -1,6 +1,8 @@
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
+import { HttpClient } from '@angular/common/http'; // Add this import statement
+
 import { AuthorizeGuard } from "src/api-authorization/authorize.guard";
 import { StudentListComponent } from "./students/student-list/student-list.component";
 import { StudentDetailsComponent } from "./students/student-details/student-details.component";

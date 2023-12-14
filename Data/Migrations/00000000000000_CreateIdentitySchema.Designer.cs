@@ -17,9 +17,9 @@ namespace StudentApp.Data.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.0-rc1.19455.8")
+                .HasAnnotation("ProductVersion", "3.1.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("Relational:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
             modelBuilder.Entity("StudentApp.Models.ApplicationUser", b =>
                 {
@@ -103,7 +103,7 @@ namespace StudentApp.Data.Migrations
                     b.Property<string>("Data")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(50000);
+                        .HasMaxLength(5000);
 
                     b.Property<string>("DeviceCode")
                         .IsRequired()
@@ -145,7 +145,7 @@ namespace StudentApp.Data.Migrations
                     b.Property<string>("Data")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(50000);
+                        .HasMaxLength(5000);
 
                     b.Property<DateTime?>("Expiration")
                         .HasColumnType("datetime2");

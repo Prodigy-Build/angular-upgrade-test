@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { ToastrService } from "ngx-toastr";
-
 import { StudentService } from "../../services/student.service";
 import { Student } from "src/app/models/Student";
 
@@ -11,8 +10,8 @@ import { Student } from "src/app/models/Student";
 })
 export class StudentListComponent implements OnInit {
   pageTitle = "Student List";
-  filteredStudents;
-  students;
+  filteredStudents: Student[]; // Changed the type to Student[]
+  students: Student[]; // Changed the type to Student[]
   errorMessage = "";
   _listFilter = "";
 

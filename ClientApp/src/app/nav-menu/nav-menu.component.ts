@@ -1,28 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { AuthorizeService } from 'src/api-authorization/authorize.service';
 
 @Component({
-    selector: 'app-nav-menu',
-    templateUrl: './nav-menu.component.html',
-    styleUrls: ['./nav-menu.component.css']
+  selector: 'app-nav-menu',
+  templateUrl: './nav-menu.component.html',
+  styleUrls: ['./nav-menu.component.css']
 })
-export class NavMenuComponent {
-    isExpanded = false;
-    isAuthenticated: Observable<boolean>;
-  
-    constructor(private authorizeService: AuthorizeService) { }
-  
-    ngOnInit() {
-      this.isAuthenticated = this.authorizeService.isAuthenticated();
-    }
+export class NavMenuComponent implements OnInit {
+  isExpanded = false;
+  isAuthenticated: Observable<boolean>;
 
-    collapse() {
-        this.isExpanded = false;
-    }
+  constructor(private authorizeService: AuthorizeService) { }
 
-    toggle() {
-        this.isExpanded = !this.isExpanded;
-    }
+  ngOnInit(): void {
+    this.isAuthenticated = this.authorizeService.isAuthenticated();
+  }
+
+  collapse(): void {
+    this.isExpanded = false;
+  }
+
+  toggle(): void {
+    this.isExpanded = !this.isExpanded;
+  }
 }

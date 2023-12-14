@@ -7,12 +7,11 @@
       "node"
     ]
   },
-  "files": [
-    "test.ts",
-    "polyfills.ts"
+  "includes": [
+    "src/**/*.spec.ts",
+    "src/**/*.d.ts"
   ],
-  "include": [
-    "**/*.spec.ts",
-    "**/*.d.ts"
-  ]
+  "angularCompilerOptions": {
+    "enableIvy": false
+  }
 }

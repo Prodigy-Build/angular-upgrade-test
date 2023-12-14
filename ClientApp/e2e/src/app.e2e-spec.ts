@@ -1,14 +1,17 @@
+// Upgrade to Angular 8
+
 import { AppPage } from './app.po';
 
 describe('App', () => {
   let page: AppPage;
 
-  beforeEach(() => {
+  beforeEach(async () => {
     page = new AppPage();
+    await page.navigateTo(); // Update to async/await syntax
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
-    expect(page.getMainHeading()).toEqual('Hello, world!');
+  it('should display welcome message', async () => {
+    // Update to async/await syntax for expect statement
+    expect(await page.getMainHeading()).toEqual('Hello, world!');
   });
 });

@@ -1,5 +1,9 @@
 {
-  "extends": "../tslint.json",
+  "$schema": "https://json.schemastore.org/tslint",
+  "extends": [
+    "tslint:recommended",
+    "tslint-angular"
+  ],
   "rules": {
     "directive-selector": [
       true,

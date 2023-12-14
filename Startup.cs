@@ -63,17 +63,16 @@ namespace StudentApp
 
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 
-            ////Configure CORS to allow any origin, header and method.
-            //services.AddCors(options =>
-            //{
-            //    options.AddPolicy("AllowAll",
-            //    builder =>
-            //    {
-            //        builder.AllowAnyOrigin()
-            //               .AllowAnyHeader()
-            //               .AllowAnyMethod();
-            //    });
-            //});
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll",
+                builder =>
+                {
+                    builder.AllowAnyOrigin()
+                           .AllowAnyHeader()
+                           .AllowAnyMethod();
+                });
+            });
         }
 
         /// <summary>
@@ -95,7 +94,8 @@ namespace StudentApp
                 app.UseHsts();
             }
 
-            //app.UseCors("CorsPolicy");
+            app.UseCors("AllowAll");
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             if (!_currentEnvironment.IsDevelopment())
@@ -110,9 +110,6 @@ namespace StudentApp
             app.UseApiResponseAndExceptionWrapper(new AutoWrapperOptions { IsApiOnly = false });
 
             app.UseRouting();
-
-            ////Enable CORS
-            //app.UseCors("AllowAll");
 
             app.UseAuthentication();
             app.UseIdentityServer();

@@ -1,0 +1,67 @@
+/**
+ * Created by Administrator on 2017/9/8.
+ */
+.login-block {
+    width: 320px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(136, 155, 166, 0.075);
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.login-block .title {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.login-block .form-group {
+    margin-bottom: 20px;
+}
+
+.login-block .form-group label {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+.login-block .form-group input {
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.login-block .form-group input:focus {
+    border-color: #66afe9;
+    outline: 0;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+}
+
+.login-block .btn-block {
+    width: 100%;
+    height: 40px;
+    background-color: #0093d0;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #fff;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.login-block .btn-block:hover {
+    background-color: #1aa6e2;
+}

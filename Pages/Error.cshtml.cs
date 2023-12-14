@@ -5,7 +5,6 @@ using System.Diagnostics;
 
 namespace StudentApp.Pages
 {
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : PageModel
     {
         private readonly ILogger<ErrorModel> _logger;

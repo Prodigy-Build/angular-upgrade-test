@@ -6,7 +6,7 @@ export class GenericValidator {
   ) {}
 
   processMessages(container: FormGroup): { [key: string]: string } {
-    const messages = {};
+    const messages: { [key: string]: string } = {};
     for (const controlKey in container.controls) {
       if (container.controls.hasOwnProperty(controlKey)) {
         const c = container.controls[controlKey];
@@ -38,8 +38,7 @@ export class GenericValidator {
     for (const controlKey in container.controls) {
       if (container.controls.hasOwnProperty(controlKey)) {
         if (container.controls[controlKey].errors) {
-          errorCount += Object.keys(container.controls[controlKey].errors)
-            .length;
+          errorCount += Object.keys(container.controls[controlKey].errors).length;
           console.log(errorCount);
         }
       }

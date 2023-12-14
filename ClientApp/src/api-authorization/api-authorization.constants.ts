@@ -21,41 +21,7 @@ export const LoginActions = {
   Register: 'register'
 };
 
-let applicationPaths: ApplicationPathsType = {
-  DefaultLoginRedirectPath: '/',
-  ApiAuthorizationClientConfigurationUrl: `/_configuration/${ApplicationName}`,
-  Login: `authentication/${LoginActions.Login}`,
-  LoginFailed: `authentication/${LoginActions.LoginFailed}`,
-  LoginCallback: `authentication/${LoginActions.LoginCallback}`,
-  Register: `authentication/${LoginActions.Register}`,
-  Profile: `authentication/${LoginActions.Profile}`,
-  LogOut: `authentication/${LogoutActions.Logout}`,
-  LoggedOut: `authentication/${LogoutActions.LoggedOut}`,
-  LogOutCallback: `authentication/${LogoutActions.LogoutCallback}`,
-  LoginPathComponents: [],
-  LoginFailedPathComponents: [],
-  LoginCallbackPathComponents: [],
-  RegisterPathComponents: [],
-  ProfilePathComponents: [],
-  LogOutPathComponents: [],
-  LoggedOutPathComponents: [],
-  LogOutCallbackPathComponents: [],
-  IdentityRegisterPath: '/Identity/Account/Register',
-  IdentityManagePath: '/Identity/Account/Manage'
-};
-
-applicationPaths = {
-  ...applicationPaths,
-  LoginPathComponents: applicationPaths.Login.split('/'),
-  LoginFailedPathComponents: applicationPaths.LoginFailed.split('/'),
-  RegisterPathComponents: applicationPaths.Register.split('/'),
-  ProfilePathComponents: applicationPaths.Profile.split('/'),
-  LogOutPathComponents: applicationPaths.LogOut.split('/'),
-  LoggedOutPathComponents: applicationPaths.LoggedOut.split('/'),
-  LogOutCallbackPathComponents: applicationPaths.LogOutCallback.split('/')
-};
-
-interface ApplicationPathsType {
+export interface ApplicationPathsType {
   readonly DefaultLoginRedirectPath: string;
   readonly ApiAuthorizationClientConfigurationUrl: string;
   readonly Login: string;
@@ -78,4 +44,25 @@ interface ApplicationPathsType {
   readonly IdentityManagePath: string;
 }
 
-export const ApplicationPaths: ApplicationPathsType = applicationPaths;
+export const ApplicationPaths: ApplicationPathsType = {
+  DefaultLoginRedirectPath: '/',
+  ApiAuthorizationClientConfigurationUrl: `/_configuration/${ApplicationName}`,
+  Login: `authentication/${LoginActions.Login}`,
+  LoginFailed: `authentication/${LoginActions.LoginFailed}`,
+  LoginCallback: `authentication/${LoginActions.LoginCallback}`,
+  Register: `authentication/${LoginActions.Register}`,
+  Profile: `authentication/${LoginActions.Profile}`,
+  LogOut: `authentication/${LogoutActions.Logout}`,
+  LoggedOut: `authentication/${LogoutActions.LoggedOut}`,
+  LogOutCallback: `authentication/${LogoutActions.LogoutCallback}`,
+  LoginPathComponents: [],
+  LoginFailedPathComponents: [],
+  LoginCallbackPathComponents: [],
+  RegisterPathComponents: [],
+  ProfilePathComponents: [],
+  LogOutPathComponents: [],
+  LoggedOutPathComponents: [],
+  LogOutCallbackPathComponents: [],
+  IdentityRegisterPath: '/Identity/Account/Register',
+  IdentityManagePath: '/Identity/Account/Manage'
+};

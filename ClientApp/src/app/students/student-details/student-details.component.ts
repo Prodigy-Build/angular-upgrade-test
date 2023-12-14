@@ -34,8 +34,8 @@ export class StudentDetailsComponent implements OnInit {
   
   getStudent(id: number) {
     this.studentService.getStudent(id).subscribe(
-      response => (this.student = <Student>response.result),
-      error => (this.errorMessage = <any>error)
+      (response: any) => (this.student = <Student>response.result),
+      (error: any) => (this.errorMessage = <any>error)
     );
   }
 

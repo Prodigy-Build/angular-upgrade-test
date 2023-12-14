@@ -14,3 +14,19 @@ code {
     background-color: #1b6ec2;
     border-color: #1861ac;
 }
+
+/* Upgrade to Angular 8 styles */
+
+::ng-deep a {
+    color: #0366d6;
+}
+
+::ng-deep code {
+    color: #e01a76;
+}
+
+::ng-deep .btn-primary {
+    color: #fff;
+    background-color: #1b6ec2;
+    border-color: #1861ac;
+}
