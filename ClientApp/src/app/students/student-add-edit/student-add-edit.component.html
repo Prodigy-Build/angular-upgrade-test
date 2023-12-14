@@ -1,0 +1,91 @@
+<div class="card">
+  <div class="card-header">{{ pageTitle }}</div>
+
+  <div class="card-body">
+    <form novalidate (ngSubmit)="saveStudent()" [formGroup]="studentForm">
+      <input type="hidden" formControlName="id" />
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': displayMessage.name }" />
+            <span *ngIf="displayMessage.name" class="invalid-feedback">{{ displayMessage.name }}</span>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': displayMessage.email }" />
+            <span *ngIf="displayMessage.email" class="invalid-feedback">{{ displayMessage.email }}</span>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input type="tel" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': displayMessage.phone }" />
+            <span *ngIf="displayMessage.phone" class="invalid-feedback">{{ displayMessage.phone }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': displayMessage.gender }">
+              <option value=""></option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+            <span *ngIf="displayMessage.gender" class="invalid-feedback">{{ displayMessage.gender }}</span>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="form-group">
+            <label for="bloodGroup">Blood Group:</label>
+            <select formControlName="bloodGroup" class="form-control" [ngClass]="{ 'is-invalid': displayMessage.bloodGroup }">
+              <option value="">Select Blood Group</option>
+              <option *ngFor="let group of bloodGroups">{{ group }}</option>
+            </select>
+            <span *ngIf="displayMessage.bloodGroup" class="invalid-feedback">{{ displayMessage.bloodGroup }}</span>
+          </div>
+        </div>
+      </div>
+      <div class="row" formGroupName="address">
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="street">Street:</label>
+            <input type="text" formControlName="street" class="form-control" [ngClass]="{ 'is-invalid': displayMessage.street }" />
+            <span *ngIf="displayMessage.street" class="invalid-feedback">{{ displayMessage.street }}</span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="city">City:</label>
+            <input type="text" formControlName="city" class="form-control" [ngClass]="{ 'is-invalid': displayMessage.city }" />
+            <span *ngIf="displayMessage.City" class="invalid-feedback">{{ displayMessage.city }}</span>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="state">State</label>
+            <input type="text" formControlName="state" class="form-control" />
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="form-group">
+            <label for="country">Country:</label>
+            <input type="text" formControlName="country" class="form-control" [ngClass]="{ 'is-invalid': displayMessage.country }" />
+            <span *ngIf="displayMessage.country" class="invalid-feedback">{{ displayMessage.country }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <div class="offset-md-2 col-md-6">
+          <button class="btn btn-primary mr-3" type="submit" [disabled]="!studentForm.valid">Save</button>
+          <button class="btn btn-outline-secondary mr-3" type="button" [routerLink]="['/students']">Cancel</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
